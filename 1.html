@@ -1,0 +1,38 @@
+<html>
+
+<button id="btn">Click Me</button>
+<script type="text/javascript">
+
+var a = document.getElementById("btn");
+
+function addEvent(elm, evType, fn, useCapture) {
+    if (elm.addEventListener) {
+    	elm.addEventListener(evType, fn, useCapture);
+    	return true;
+    }
+    else if (elm.attachEvent) {
+    	var r = elm.attachEvent('on' + evType, fn);
+    	return r;
+    }
+    else {
+    	elm['on' + evType] = fn;
+    }
+}
+
+handler = function(){
+   showHref(el);
+}
+
+showHref = function(el) {
+   alert("Hi");
+}
+
+var el = document.getElementById('btn');
+
+addEvent(el, 'click', handler);
+function doOnClick() {
+   showHref(document.getElementById('btn'));
+}
+
+</script>
+</html>
